@@ -1,0 +1,34 @@
+*
+{
+  border: 0;
+}
+
+/* id selector */
+#calculatorStyle
+{
+  display: grid;
+  grid-template-columns: repeat(4 , 60px);
+  grid-gap: 4px; 
+  
+}
+/* class selector */
+.digitButton , .operationButton
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #333333;
+  border-radius: 30px;
+  height: 60px;
+  width: 60px;
+  font-size: larger;
+}
+.operationButtonColor
+{
+  background-color: #fea00a;
+}
+.digitButton:hover , .operationButton:hover
+{
+  cursor: pointer;
+}
