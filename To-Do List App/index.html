@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My ToDo List</title>
+</head>
+<body>
+  <h1>To Do list</h1>
+  <input type="text" class="js-input-name"  placeholder="ToDo Name">
+  <input type="date" class="js-input-Date">
+  <button onclick="addToDo() ; displayTask()">Add</button>
+  <p class="js-displayTask" ></p>
+  <p></p>
+  <script>
+    const todoList = [];
+    function addToDo()
+    {
+      
+      let taskName = document.querySelector('.js-input-name');
+      let taskDate = document.querySelector('.js-input-Date');
+      const name = taskName.value;
+      const date = taskDate.value;
+      let toDo = 
+      { 
+        name , date ,
+      };
+      todoList.push(toDo);
+      console.log(todoList);
+      
+    }
+    function displayTask()
+    {
+      document.querySelector('.js-displayTask').innerHTML = todoList;
+    }
+  </script>
+</body>
+</html>
