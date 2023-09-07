@@ -9,8 +9,8 @@
   <h1>To Do list</h1>
   <input type="text" class="js-input-name"  placeholder="ToDo Name">
   <input type="date" class="js-input-Date">
-  <button onclick="addToDo() ; displayTask()">Add</button>
-  <p class="js-displayTask" ></p>
+  <button onclick="addToDo() ">Add</button>
+  <div class="js-todo-display"></div>
   <p></p>
   <script>
     const todoList = [];
@@ -23,16 +23,20 @@
       const date = taskDate.value;
       let toDo = 
       { 
-        name , date ,
+        name  , date
       };
       todoList.push(toDo);
-      console.log(todoList);
-      
+      let todoListHTML = '';
+      for(let i= 0; i<todoList.length;i++)
+      {
+        const todo = todoList[i];
+        const html = `<p>Task:${toDo.name }  Date:${toDo.date}</p>` ;
+        todoListHTML += html;
+        
+      }
+      document.querySelector('.js-todo-display').innerHTML = todoListHTML;
     }
-    function displayTask()
-    {
-      document.querySelector('.js-displayTask').innerHTML = todoList;
-    }
+    
   </script>
 </body>
 </html>
