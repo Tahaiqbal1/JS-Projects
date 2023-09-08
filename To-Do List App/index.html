@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My ToDo List</title>
 </head>
+
 <body>
-  <h1>To Do list</h1>
-  <input type="text" class="js-input-name"  placeholder="ToDo Name">
-  <input type="date" class="js-input-Date">
-  <button onclick="addToDo() ">Add</button>
+  <h1>To-Do List</h1>
+
+  <input type="text" class="js-input-task-name" placeholder="Task Name" onkeydown="handleAddKeyButton(event)" />
+  <input type="date" class="js-input-task-date" onkeydown="handleAddKeyButton(event)" />
+  <button onclick="addToDo(); displayToDoList()">Add</button>
   <div class="js-todo-display"></div>
   <p></p>
   <script>
-    const todoList = [];
-    function addToDo()
-    {
-      
-      let taskName = document.querySelector('.js-input-name');
-      let taskDate = document.querySelector('.js-input-Date');
-      const name = taskName.value;
-      const date = taskDate.value;
-      let toDo = 
-      { 
-        name  , date
-      };
-      todoList.push(toDo);
-      let todoListHTML = '';
-      for(let i= 0; i<todoList.length;i++)
-      {
-        const todo = todoList[i];
-        const html = `<p>Task:${toDo.name }  Date:${toDo.date}</p>` ;
-        todoListHTML += html;
-        
+    const tasks = [];
+
+    function handleAddKeyButton(event) {
+      if (event.key === "Enter") {
+        addToDo();
+        displayToDoList();
       }
-      document.querySelector('.js-todo-display').innerHTML = todoListHTML;
     }
-    
+
+    function addToDo() {
+      let taskNameInput = document.querySelector(".js-input-task-name");
+      let taskDateInput = document.querySelector(".js-input-task-date");
+      const name = taskNameInput.value;
+      const date = taskDateInput.value;
+      let task = {
+        name,
+        date,
+      };
+      tasks.push(task);
+    }
+
+    function displayToDoList() {
+      let taskListHTML = "";
+      for (let i = 0; i < tasks.length; i++) {
+        const taskItem = tasks[i];
+        const html = `<p>Task: ${taskItem.name}  Date: ${taskItem.date} <button onclick="deleteToDo(${i})">Delete</button></p>`;
+        taskListHTML += html;
+      }
+      document.querySelector(".js-todo-display").innerHTML = taskListHTML;
+    }
+
+    function deleteToDo(i) {
+      tasks.splice(i, 1);
+      displayToDoList();
+    }
   </script>
 </body>
+
 </html>
