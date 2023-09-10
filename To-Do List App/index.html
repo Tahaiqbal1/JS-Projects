@@ -11,47 +11,11 @@
   <h1>To-Do List</h1>
 
   <input type="text" class="js-input-task-name" placeholder="Task Name" onkeydown="handleAddKeyButton(event)" />
-  <input type="date" class="js-input-task-date" onkeydown="handleAddKeyButton(event)" />
+  <input type="date" class="js-input-task-date"  onkeydown="handleAddKeyButton(event)" />
   <button onclick="addToDo(); displayToDoList()">Add</button>
   <div class="js-todo-display"></div>
   <p></p>
-  <script>
-    const tasks = [];
-
-    function handleAddKeyButton(event) {
-      if (event.key === "Enter") {
-        addToDo();
-        displayToDoList();
-      }
-    }
-
-    function addToDo() {
-      let taskNameInput = document.querySelector(".js-input-task-name");
-      let taskDateInput = document.querySelector(".js-input-task-date");
-      const name = taskNameInput.value;
-      const date = taskDateInput.value;
-      let task = {
-        name,
-        date,
-      };
-      tasks.push(task);
-    }
-
-    function displayToDoList() {
-      let taskListHTML = "";
-      for (let i = 0; i < tasks.length; i++) {
-        const taskItem = tasks[i];
-        const html = `<p>Task: ${taskItem.name}  Date: ${taskItem.date} <button onclick="deleteToDo(${i})">Delete</button></p>`;
-        taskListHTML += html;
-      }
-      document.querySelector(".js-todo-display").innerHTML = taskListHTML;
-    }
-
-    function deleteToDo(i) {
-      tasks.splice(i, 1);
-      displayToDoList();
-    }
-  </script>
+  <script src="toDo.js"></script>
 </body>
 
 </html>
